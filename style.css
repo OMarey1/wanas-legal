@@ -1,0 +1,407 @@
+/* ============================================================================
+   Wanas legal pages — the app's design system, on the web.
+
+   Ported from src/theme/tokens.ts and src/theme/typography.ts rather than
+   re-invented, so a member who taps through from the app lands somewhere that
+   looks like the app: cream screen, white cards, emerald accent, Cairo for
+   Arabic and Poppins for Latin, the same 18px card radius and 22px screen
+   padding, the same three elevations.
+
+   Light only, because the app is. There is no dark theme to match.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  /* colours — tokens.ts */
+  --emerald: #00674A;
+  --emerald-soft: #E2EFE9;
+  --ocean: #08567D;
+  --ocean-soft: #E4EDF3;
+  --coral: #E9826B;
+  --coral-deep: #C75B45;
+  --coral-soft: #FBEAE4;
+  --cream: #F6F3EC;
+  --card: #FFFFFF;
+  --ink: #1B2D28;
+  --slate: #55655F;          /* secondary text — the AA-corrected `muted` */
+  --alert: #B04A33;          /* emergency / destructive */
+  --live: #2FA968;
+  --line: rgba(27, 45, 40, 0.08);
+
+  /* spacing — tokens.ts */
+  --sp-xs: 4px;
+  --sp-sm: 8px;
+  --sp-md: 12px;
+  --sp-lg: 16px;
+  --sp-xl: 24px;
+  --sp-xxl: 32px;
+  --sp-card: 18px;
+  --sp-screen: 22px;
+
+  /* radii — tokens.ts */
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 18px;
+  --r-xl: 24px;
+  --r-pill: 999px;
+
+  /* elevation — shadows.raised / .soft */
+  --e-raised: 0 1px 4px rgba(27, 45, 40, 0.06);
+  --e-soft: 0 8px 30px rgba(27, 45, 40, 0.10);
+
+  --font-latin: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-arabic: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-latin);
+  /* typeScale.body — 15/22 */
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+[dir='rtl'] body,
+body[dir='rtl'],
+.lang[dir='rtl'] { font-family: var(--font-arabic); }
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--sp-screen) var(--sp-screen) 72px;
+}
+
+/* ── masthead ─────────────────────────────────────────────────────────── */
+
+.masthead {
+  padding: var(--sp-xl) 0 var(--sp-lg);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  /* typeScale.sectionTitle */
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.brand .mark {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--r-pill);
+  background: var(--emerald);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  flex: none;
+  box-shadow: var(--e-raised);
+}
+
+.brand .sub {
+  font-weight: 400;
+  color: var(--slate);
+  font-family: var(--font-arabic);
+}
+
+/* segmented control — mirrors the app's Segmented */
+.segmented {
+  display: inline-flex;
+  background: rgba(27, 45, 40, 0.05);
+  border-radius: var(--r-pill);
+  padding: 3px;
+  margin-top: var(--sp-lg);
+}
+
+.segmented button {
+  font-family: inherit;
+  /* typeScale.micro */
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--slate);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.segmented button[aria-pressed='true'] {
+  background: var(--card);
+  color: var(--emerald);
+  box-shadow: var(--e-raised);
+}
+
+.segmented button:last-child { font-family: var(--font-arabic); }
+
+/* ── type ─────────────────────────────────────────────────────────────── */
+
+h1 {
+  /* typeScale.screenTitle — 22/30 bold */
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 600;
+  margin: var(--sp-lg) 0 var(--sp-sm);
+  letter-spacing: -0.01em;
+}
+
+[dir='rtl'] h1 { font-weight: 700; }
+
+h2 {
+  /* typeScale.sectionTitle — 17/24 bold */
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 600;
+  margin: var(--sp-xxl) 0 var(--sp-md);
+}
+
+[dir='rtl'] h2 { font-weight: 700; }
+
+h3 {
+  /* typeScale.cardTitle — 16/22 */
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  margin: var(--sp-xl) 0 var(--sp-sm);
+}
+
+p { margin: 0 0 var(--sp-md); }
+
+.meta {
+  /* typeScale.meta — 13/18 */
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--slate);
+  margin: 0;
+}
+
+.lede {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--slate);
+  margin: 0 0 var(--sp-xl);
+}
+
+strong { font-weight: 600; }
+
+a {
+  color: var(--emerald);
+  text-decoration-color: rgba(0, 103, 74, 0.35);
+  text-underline-offset: 3px;
+}
+
+a:hover { text-decoration-color: var(--emerald); }
+
+ol, ul {
+  padding-inline-start: 20px;
+  margin: 0 0 var(--sp-md);
+}
+
+li { margin: var(--sp-xs) 0; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 2px 7px;
+}
+
+/* ── card ─────────────────────────────────────────────────────────────── */
+
+.card {
+  background: var(--card);
+  border-radius: var(--r-lg);
+  padding: var(--sp-card);
+  box-shadow: var(--e-raised);
+  margin: 0 0 var(--sp-lg);
+}
+
+.card > :last-child { margin-bottom: 0; }
+.card h2 { margin-top: 0; }
+.card h3:first-child { margin-top: 0; }
+
+.card.hero {
+  box-shadow: var(--e-soft);
+  padding: var(--sp-xl) var(--sp-card);
+}
+
+/* ── callouts ─────────────────────────────────────────────────────────── */
+
+.callout {
+  border-radius: var(--r-md);
+  padding: var(--sp-lg) var(--sp-card);
+  margin: 0 0 var(--sp-lg);
+  border-inline-start: 3px solid var(--slate);
+  background: var(--card);
+}
+
+.callout > :last-child { margin-bottom: 0; }
+
+.callout.alert {
+  background: var(--coral-soft);
+  border-inline-start-color: var(--alert);
+  color: var(--ink);
+}
+
+.callout.good {
+  background: var(--emerald-soft);
+  border-inline-start-color: var(--emerald);
+}
+
+.callout.info {
+  background: var(--ocean-soft);
+  border-inline-start-color: var(--ocean);
+}
+
+/* ── rows (the app's ValueRow, as a table) ────────────────────────────── */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 var(--sp-md);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+thead th {
+  /* typeScale.micro — field labels */
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--slate);
+  text-align: start;
+  padding: 0 var(--sp-md) var(--sp-sm);
+  border-bottom: 1px solid var(--line);
+}
+
+tbody td {
+  padding: var(--sp-md);
+  text-align: start;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+
+tbody tr:last-child td { border-bottom: 0; }
+
+tbody td:first-child { font-weight: 600; }
+
+/* ── chips ────────────────────────────────────────────────────────────── */
+
+.chip {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  background: var(--emerald-soft);
+  color: var(--emerald);
+}
+
+.chip.warn { background: var(--coral-soft); color: var(--alert); }
+.chip.neutral { background: rgba(27, 45, 40, 0.05); color: var(--slate); }
+
+/* ── steps ────────────────────────────────────────────────────────────── */
+
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: step;
+}
+
+.steps li {
+  position: relative;
+  padding-inline-start: 38px;
+  margin: 0 0 var(--sp-lg);
+  counter-increment: step;
+}
+
+.steps li:last-child { margin-bottom: 0; }
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--r-pill);
+  background: var(--emerald-soft);
+  color: var(--emerald);
+  font-size: 13px;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+}
+
+/* ── button ───────────────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-block;
+  /* typeScale.action — 15/20 bold */
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  padding: 13px 24px;
+  border-radius: var(--r-pill);
+  background: var(--emerald);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: var(--e-raised);
+}
+
+.btn:hover { background: #00543C; }
+
+/* ── footer ───────────────────────────────────────────────────────────── */
+
+footer {
+  margin-top: var(--sp-xxl);
+  padding-top: var(--sp-lg);
+  border-top: 1px solid var(--line);
+  color: var(--slate);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* ── language panes ───────────────────────────────────────────────────── */
+
+.lang { display: none; }
+.lang.on { display: block; }
+
+/* Cairo sits smaller on the line than Poppins at the same size. */
+.lang[dir='rtl'] { font-size: 16px; line-height: 26px; }
+.lang[dir='rtl'] .meta { font-size: 14px; line-height: 20px; }
+.lang[dir='rtl'] table { font-size: 15px; line-height: 24px; }
+
+@media (max-width: 560px) {
+  :root { --sp-screen: 16px; }
+  h1 { font-size: 21px; line-height: 29px; }
+  table { font-size: 13px; line-height: 19px; }
+  thead th, tbody td { padding-inline: var(--sp-sm); }
+}
+
+@media print {
+  body { background: #fff; }
+  .segmented, footer { display: none; }
+  .card, .callout { box-shadow: none; border: 1px solid var(--line); }
+  .lang { display: block !important; }
+}
