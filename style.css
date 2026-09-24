@@ -85,35 +85,23 @@ body[dir='rtl'],
   padding: var(--sp-xl) 0 var(--sp-lg);
 }
 
+/* The wordmark carries the name, so no text sits beside it. Height is fixed
+   and width follows the 520:149 aspect, so the logo never reflows the header. */
 .brand {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-sm);
-  /* typeScale.sectionTitle */
-  font-size: 17px;
-  line-height: 24px;
-  font-weight: 600;
-  color: var(--ink);
+  display: inline-block;
+  line-height: 0;
 }
 
-.brand .mark {
-  width: 34px;
-  height: 34px;
-  border-radius: var(--r-pill);
-  background: var(--emerald);
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-size: 15px;
-  font-weight: 600;
-  flex: none;
-  box-shadow: var(--e-raised);
+.brand img {
+  height: 42px;
+  width: auto;
+  display: block;
 }
 
-.brand .sub {
-  font-weight: 400;
-  color: var(--slate);
-  font-family: var(--font-arabic);
+/* The mark is directional-neutral, but the header should still start from the
+   reading edge in both directions — the flow handles that on its own. */
+@media (max-width: 560px) {
+  .brand img { height: 36px; }
 }
 
 /* segmented control — mirrors the app's Segmented */

@@ -90,3 +90,9 @@ the `github.io` URL, so this is cosmetic.
 - Keep the Data safety form consistent with section 2 of the policy. Google
   cross-checks the declaration against the app's real network behaviour, and a
   mismatch is a rejection.
+
+## Assets
+
+`wanas-logo.png` is a copy of `assets/images/wanas-logo.png`. If the brand mark
+changes in the app, copy it across again — these pages are served from a
+separate public repo and cannot reference the app repo.
